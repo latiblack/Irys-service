@@ -96,6 +96,7 @@ app.post('/api/upload-feedback', async (req, res) => {
       projectId: feedbackData.project_id,
       userId: feedbackData.user_id,
       title: feedbackData.title,
+      content: feedbackData.content,
       timestamp: feedbackData.created_at,
       type: 'feedback'
     };
@@ -106,6 +107,7 @@ app.post('/api/upload-feedback', async (req, res) => {
       { name: "data-type", value: "feedback" },
       { name: "project-id", value: String(feedbackData.project_id) },
       { name: "user-id", value: String(feedbackData.user_id) },
+      { name: "has-content", value: feedbackData.content? "true" : "false"},
       { name: "Content-Type", value: "application/json" }
     ];
     
