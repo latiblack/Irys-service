@@ -56,8 +56,8 @@ app.post('/api/upload-vote', async (req, res) => {
     const tags = [
       { name: "application-id", value: "ProjectVotingApp" },
       { name: "data-type", value: "vote" },
-      { name: "project-id", value: voteData.project_id },
-      { name: "user-id", value: voteData.user_id },
+      { name: "project-id", value: String(voteData.project_id) },
+      { name: "user-id", value: String(voteData.user_id) },
       { name: "Content-Type", value: "application/json" }
     ];
     
@@ -104,8 +104,8 @@ app.post('/api/upload-feedback', async (req, res) => {
     const tags = [
       { name: "application-id", value: "ProjectVotingApp" },
       { name: "data-type", value: "feedback" },
-      { name: "project-id", value: feedbackData.project_id },
-      { name: "user-id", value: feedbackData.user_id },
+      { name: "project-id", value: String(feedbackData.project_id) },
+      { name: "user-id", value: String(feedbackData.user_id) },
       { name: "Content-Type", value: "application/json" }
     ];
     
