@@ -47,7 +47,7 @@ app.post('/api/upload-vote', async (req, res) => {
     const blockchainVoteData = {
       id: voteData.id,
       projectId: voteData.project_id,
-      userId: voteData.user_id,
+      walletAddress: voteData.wallet_address,
       timestamp: voteData.created_at,
       type: 'vote'
     };
@@ -57,7 +57,7 @@ app.post('/api/upload-vote', async (req, res) => {
       { name: "application-id", value: "ProjectVotingApp" },
       { name: "data-type", value: "vote" },
       { name: "project-id", value: String(voteData.project_id) },
-      { name: "user-id", value: String(voteData.user_id) },
+      { name: "wallet-address", value: String(voteData.wallet_address) },
       { name: "Content-Type", value: "application/json" }
     ];
     
@@ -94,7 +94,7 @@ app.post('/api/upload-feedback', async (req, res) => {
     const blockchainFeedbackData = {
       id: feedbackData.id,
       projectId: feedbackData.project_id,
-      userId: feedbackData.user_id,
+      walletAddress; feedbackData.wallet_address,
       title: feedbackData.title,
       content: feedbackData.content,
       timestamp: feedbackData.created_at,
@@ -106,7 +106,7 @@ app.post('/api/upload-feedback', async (req, res) => {
       { name: "application-id", value: "ProjectVotingApp" },
       { name: "data-type", value: "feedback" },
       { name: "project-id", value: String(feedbackData.project_id) },
-      { name: "user-id", value: String(feedbackData.user_id) },
+      { name: "wallet-address", value: String(feedbackData.wallet_address) },
       { name: "has-content", value: feedbackData.content? "true" : "false"},
       { name: "Content-Type", value: "application/json" }
     ];
