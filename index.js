@@ -94,7 +94,7 @@ app.post('/api/upload-feedback', async (req, res) => {
     const blockchainFeedbackData = {
       id: feedbackData.id,
       projectId: feedbackData.project_id,
-      walletAddress; feedbackData.wallet_address,
+      walletAddress: feedbackData.wallet_address,
       title: feedbackData.title,
       content: feedbackData.content,
       timestamp: feedbackData.created_at,
@@ -107,7 +107,7 @@ app.post('/api/upload-feedback', async (req, res) => {
       { name: "data-type", value: "feedback" },
       { name: "project-id", value: String(feedbackData.project_id) },
       { name: "wallet-address", value: String(feedbackData.wallet_address) },
-      { name: "has-content", value: feedbackData.content? "true" : "false"},
+      { name: "has-content", value: feedbackData.content ? "true" : "false" },
       { name: "Content-Type", value: "application/json" }
     ];
     
