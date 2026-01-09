@@ -8,6 +8,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const IRYS_GATEWAY_URL = process.env.IRYS_GATEWAY_URL || 'https://gateway.irys.xyz';
 
 // Middleware
 app.use(cors());
@@ -64,12 +65,12 @@ app.post('/api/upload-vote', async (req, res) => {
     // Upload to Irys
     const receipt = await uploader.upload(JSON.stringify(blockchainVoteData), { tags });
     
-    console.log(`Vote uploaded to Irys: https://gateway.irys.xyz/${receipt.id}`);
+    console.log(`Vote uploaded to Irys: ${IRYS_GATEWAY_URL}/${receipt.id}`);
     
     res.json({
       success: true,
       irysId: receipt.id,
-      gatewayUrl: `https://gateway.irys.xyz/${receipt.id}`
+      gatewayUrl: `${IRYS_GATEWAY_URL}/${receipt.id}`
     });
   } catch (error) {
     console.error('Error uploading vote to Irys:', error);
@@ -114,12 +115,12 @@ app.post('/api/upload-feedback', async (req, res) => {
     // Upload to Irys
     const receipt = await uploader.upload(JSON.stringify(blockchainFeedbackData), { tags });
     
-    console.log(`Feedback uploaded to Irys: https://gateway.irys.xyz/${receipt.id}`);
+    console.log(`Feedback uploaded to Irys: ${IRYS_GATEWAY_URL}/${receipt.id}`);
     
     res.json({
       success: true,
       irysId: receipt.id,
-      gatewayUrl: `https://gateway.irys.xyz/${receipt.id}`
+      gatewayUrl: `${IRYS_GATEWAY_URL}/${receipt.id}`
     });
   } catch (error) {
     console.error('Error uploading feedback to Irys:', error);
